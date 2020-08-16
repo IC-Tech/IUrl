@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+$default-transition: .3s;
+$col1: #1d2228;
+$col2: #31363e;
+$col3: #2e86de;
+$col4: #eeeeee;
+$col5: #cccccc;
+$col6: #ff203f;
+@mixin fonts() {
+	font-family: 'Noto Sans',Roboto,Helvetica,'Segoe UI Emoji',-apple-system,BlinkMacSystemFont,Arial,'IC Noto Sans Sinhala','Segoe UI',Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue', sans-serif;
+}
+@mixin button() {
+	background-color: $col3;
+	color: $col4;
+	@include fonts;
+	font-size: 16px;
+	border: 0;
+	border-radius: 4px;
+	padding: 4px 8px 6px;
+	cursor: pointer;
+	text-decoration: none;
+}
+body, a, span, p, textarea {
+	@include fonts;
+	font-size: 16px;
+}
+* {
+	-webkit-backface-visibility: hidden;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body, html, #root {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	min-height: 100vh;
+	background-color: $col1;
+	&, a {
+		color: $col4;
+	}
+}
+#root {
+	display: block!important;
+}
+.main > *{
+	display: block;
+}
+.content {
+	display: block;
+	min-height: calc(100vh - 60px);
+}
+.title {
+	display: block;
+	text-align: center;
+	width: 100%;
+	padding: 26px 0 0 0;
+	span {
+		font-size: 36px;
+		&.c1 {
+			color: $col3;
+		}
+	}
+}
+.cont, .links {
+	padding-top: 20px;
+	max-width: 800px;
+	width: 90%;
+	margin: 0 auto;
+}
+.cont {
+	display: flex;
+	flex-direction: row;
+	* {
+		@include fonts;
+		font-size: 16px;
+	}
+	input {
+		padding: 4px 8px;
+		background-color: $col2;
+		color: $col4;
+		border: 2px solid $col3;
+		border-radius: 4px;
+		line-height: 1;
+		width: 100%;
+		margin-right: 16px;
+	}
+	button {
+		@include button;
+	}
+}
+.links {
+	.link, .err {
+		display: block;
+		width: 100%;
+		background-color: $col2;
+		border-radius: 4px;
+		padding: 10px;
+		margin: 0 0 10px 0;
+		box-sizing: border-box;
+		span {
+			display: block;
+		}
+		button, a {
+			cursor: pointer;
+			text-decoration: none;
+			color: $col3 !important;
+			@include fonts;
+			font-size: 16px;
+			border: 0;
+			background-color: transparent;
+			margin: 0 10px 0 0;
+			padding: 2px;
+		}
+	}
+	.err span {
+		color: $col6;
+	}
+}
+.fo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 10px;
+	min-height: 60px;
+	box-sizing: border-box;
+	background-color: $col2;
+	box-shadow: 0 0 10px #0004;
+	z-index: 10;
+	span {
+		&, * {
+			font-size: 14px;
+			text-decoration: none;
+		}
+		a {
+			white-space:nowrap;
+			font-weight: bold;
+		}
+		display: block;
+		text-align: center;
+	}
+}
