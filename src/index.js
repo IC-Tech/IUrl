@@ -1,5 +1,6 @@
 /* Copyright © 2020, Imesh Chamara. All rights reserved. */
 import {IAR, xhr, icApp} from 'ic-app'
+import {toASCII} from './punycode'
 import './style.scss'
 const server = API_SERVER
 function gtag(){window.dataLayer.push(arguments);}
@@ -12,10 +13,11 @@ class site extends IAR {
 		this.links = []
 		this.shorten = async a => {
 			if(this.load) return
-			this.load = 1
-			this.update()
 			a = new icApp('input[name="link"]')
-			this.links.push([a.val, await xhr(server + '/create', 0, JSON.stringify({url: a.val}))])
+			var url = a.val.trim()
+			if(url.match(/[^\x01-\x7f]/g)) return a.val = toASCII(url)
+			this.load = 1
+			this.links.push([a.val, await xhr(server + '/create', 0, JSON.stringify({url}))])
 			a.val = ''
 			this.load = 0
 			this.update()
